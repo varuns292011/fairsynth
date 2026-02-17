@@ -1,36 +1,28 @@
-# FairSynth: Healthcare Cost Prediction Fairness Analysis
+\# FairSynth
+Evaluating fairness and utility preservation in LLM-generated synthetic healthcare data.
 
-## Overview
-This project evaluates machine learning fairness across age demographics in healthcare cost prediction. It identifies performance disparities between age groups and will assess whether LLM-generated synthetic data preserves or eliminates these gaps.
+## What This Project Does
+Detects inequality in healthcare AI predictions across age groups, generates synthetic data using LLMs, and tests whether that synthetic data is trustworthy for research.
 
-## Current Results
+## Key Findings
+- Real data model R²: 0.78 overall
+- Older patients have worst predictions (R²=0.67)
+- Synthetic data model R²: 0.54 (significantly worse)
+- Discriminator detects synthetic data with 95% accuracy
 
-**Model Performance by Age Group:**
-- **Young patients (18-30):** R² = 0.66, Error = $3,857
-- **Middle-aged (31-50):** R² = 0.84, Error = $4,111  
-- **Older patients (50+):** R² = 0.67, Error = $4,769
+## Conclusion
+LLM-generated synthetic data is not reliable enough for privacy-preserving healthcare ML research.
 
-**Key Finding:** The model systematically underperforms for older patients, who face the highest prediction errors.
-
-## Dataset
-- Medical cost data with 1,338 patients
-- Features: age, sex, BMI, smoking status, region
-- Target: Insurance charges
-
-## Next Steps
-- Generate synthetic data using LLM
-- Retrain model on synthetic data
-- Compare fairness metrics
-- Evaluate privacy-utility tradeoffs
+## Pipeline
+Real Data → Fairness Analysis → Generate Synthetic → Compare Results → Discriminator Test
 
 ## Tech Stack
-- Python
-- scikit-learn
-- pandas
-- LangChain (planned)
-- Docker (planned)
+Python, scikit-learn, pandas, LangChain, Groq LLM, Git
 
-## Usage
+## How To Run
 ```bash
 python3 fairness_analysis.py
+python3 langchain_generator.py
+python3 compare_results.py
+python3 discriminator.py
 ```
