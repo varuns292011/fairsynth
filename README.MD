@@ -2,7 +2,7 @@
 Evaluating fairness and utility preservation in LLM-generated synthetic healthcare data.
 
 ## What This Project Does
-Detects inequality in healthcare AI predictions across various age groups, generates synthetic data using SDV(Synthetic Data Vault) and tests whether that synthetic data is un-bias and cannnot be reverse engineered by bad actors, so that research stays safe, equal, and encrypted
+Detects inequality in healthcare AI predictions across various age groups, generates synthetic data using SDV(Synthetic Data Vault) and tests whether that synthetic data is un-bias and cannnot be reverse engineered by bad actors, so that research stays safe, equal, and encrypted.
 
 ## Key Findings
 - Real data model R²: 0.78 overall
