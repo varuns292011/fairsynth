@@ -1,4 +1,5 @@
 import pandas as pd
+import sys
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
@@ -9,9 +10,8 @@ def run_discriminator(real_path, synthetic_path):
     real['is_real'] = 1
     synthetic['is_real'] = 0
     combined = pd.concat([real, synthetic], ignore_index=True)
-    combined['sex'] = combined['sex'].map({'male': 0, 'female': 1})
-    combined['smoker'] = combined['smoker'].map({'no': 0, 'yes': 1})
-    combined = pd.get_dummies(combined, columns=['region'], drop_first=True)
+    for col in combined.select_dtypes(include='object').columns:
+        combined[col] = combined[col].astype('category').cat.codes
     X = combined.drop('is_real', axis=1)
     y = combined['is_real']
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
@@ -28,4 +28,9 @@ def run_discriminator(real_path, synthetic_path):
     else:
         print("VERDICT: Synthetic data is HARD to detect")
 
-run_discriminator("insurance.csv", "insurance_synthetic.csv")
+if len(sys.argv) == 3:
+    run_discriminator(sys.argv[1], sys.argv[2])
+else:
+    real = input("Enter real CSV: ").strip()
+    synthetic = input("Enter synthetic CSV: ").strip()
+    run_discriminator(real, synthetic)

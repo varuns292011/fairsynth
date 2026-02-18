@@ -63,5 +63,4 @@ Return ONLY the JSON array, nothing else."""
     return output_path
 
 # Run it
-csv_path = input("Enter your CSV filename: ")
-generate_synthetic_langchain(csv_path)
+generate_synthetic_langchain("insurance.csv")
