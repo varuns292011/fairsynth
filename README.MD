@@ -17,7 +17,7 @@ LLM-generated synthetic data is not reliable enough for privacy-preserving healt
 Real Data → Fairness Analysis → Generate Synthetic → Compare Results → Discriminator Test
 
 ## Technical skills
-Python, scikit-learn, pandas, LangChain, Groq LLM, Git
+Python, scikit-learn, pandas, LangChain, Groq LLM, Git, Docker
 
 ## How To Run
 ```bash
