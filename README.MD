@@ -21,8 +21,5 @@ Python, scikit-learn, pandas, LangChain, Groq LLM, Git
 
 ## How To Run
 ```bash
-python3 fairness_analysis.py
-python3 langchain_generator.py
-python3 compare_results.py
-python3 discriminator.py
+python3 pipeline.py
 ```
