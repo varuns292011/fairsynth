@@ -5,7 +5,7 @@ warnings.filterwarnings("ignore")
 from sdv.single_table import GaussianCopulaSynthesizer
 from sdv.metadata import SingleTableMetadata
 
-def generate_synthetic_sdv(csv_file):
+def generate_synthetic_sdv(csv_file, num_rows):
     print(f"Loading dataset: {csv_file}")
     data = pd.read_csv(csv_file)
     print(f"Original data shape: {data.shape}")
@@ -14,11 +14,15 @@ def generate_synthetic_sdv(csv_file):
     print("Training synthesizer...")
     synthesizer = GaussianCopulaSynthesizer(metadata)
     synthesizer.fit(data)
-    print("Generating 3000 synthetic rows...")
-    synthetic_data = synthesizer.sample(num_rows=3000)
+    print(f"Generating {num_rows} synthetic rows...")
+    synthetic_data = synthesizer.sample(num_rows=num_rows)
     output_path = csv_file.replace(".csv", "_sdv_synthetic.csv")
     synthetic_data.to_csv(output_path, index=False)
     print(f"Done! Saved to: {output_path}")
 
-csv_file = sys.argv[1] if len(sys.argv) > 1 else input("Enter your CSV filename: ").strip()
-generate_synthetic_sdv(csv_file)
+if len(sys.argv) == 3:
+    generate_synthetic_sdv(sys.argv[1], int(sys.argv[2]))
+else:
+    csv_file = input("Enter CSV filename: ").strip()
+    num_rows = int(input("Enter number of synthetic rows: ").strip())
+    generate_synthetic_sdv(csv_file, num_rows)
