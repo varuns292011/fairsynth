@@ -8,6 +8,7 @@ from sklearn.metrics import mean_absolute_error, r2_score
 
 def evaluate_fairness(data, label):
     data = data.copy()
+    data = data.fillna(data.mean(numeric_only=True))
     if 'sex' in data.columns:
         data['sex'] = data['sex'].map({'male': 0, 'female': 1})
     if 'smoker' in data.columns:
@@ -18,7 +19,11 @@ def evaluate_fairness(data, label):
         target = 'charges'
     else:
         target = data.columns[-1]
+    if 'age' not in data.columns:
+        print(f"\n{label} - No age column found")
+        return
     data['age_group'] = pd.cut(data['age'], bins=[0, 30, 50, 100], labels=['young', 'middle', 'older'])
+    data = data.dropna()
     X = data.drop([target, 'age_group'], axis=1)
     y = data[target]
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
