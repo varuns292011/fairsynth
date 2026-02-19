@@ -18,7 +18,7 @@ FairSynth is a complete automated pipeline that:
 
 | Synthetic Rows | Detection Accuracy | Verdict |
 |---------------|-------------------|---------|
-| 500 | 78.8% | Somewhat detectable ⭐ Sweet spot |
+| 500 | 78.8% | Somewhat detectable <- Sweet spot |
 | 1000 | 80.8% | Somewhat detectable |
 | 2000 | 80.7% | Somewhat detectable |
 | 2500 | 79.8% | Somewhat detectable |
