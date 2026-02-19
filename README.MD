@@ -2,7 +2,7 @@
 ### Evaluating Fairness and Utility Preservation in SDV-Generated Synthetic Healthcare Data
 
 ## Purpose
-Healthcare AI systems that predict insurance costs often perform unequally across different patient demographics. Researchers who want to study and fix these inequalities face a major barrier — real patient data is private and cannot be shared.
+Healthcare AI systems that predict insurance costs often perform unequally across different patient demographics. Researchers who want to study and fix these inequalities face a major barrier, real patient data is private and cannot be shared.
 
 FairSynth solves this by automatically generating synthetic patient data that mimics real healthcare datasets, then rigorously testing whether that synthetic data is trustworthy enough for research use. It measures fairness across age groups, generates statistically accurate synthetic data, and evaluates whether the synthetic data preserves real-world patterns.
 
